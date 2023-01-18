@@ -22,8 +22,12 @@ button.addEventListener("click", writePassword);
 // Write password to the #password input
 
 function writePassword() {
+
   var length = prompt("how long do you want your password be?");
-  length = password.length;
+  if (length < 8 || length > 128) {
+    alert(" sorry must be 8 - 128");
+  }
+
 
   var upper = confirm("would you like uppercase letters?");
   if (confirm("would you like uppercase letters?") === true) {
@@ -41,12 +45,12 @@ function writePassword() {
   }
   // var special = confirm("would you like special charaters?");
 
-  var password = generatePassword(
-  for (let i = 0; i < password.length; i++) {
+  var password = generatePassword();
+  for (let i = 0; i < length; i++) {
     var choice = [Math.floor(Math.random() * pool.length)];
-    console.log(pool[choice])
+    console.log(pool[choice]);
   }
-  );
+  ;
 }
 
 
