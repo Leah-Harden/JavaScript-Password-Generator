@@ -25,34 +25,31 @@ function writePassword() {
 
   var length = prompt("how long do you want your password be?");
   if (length < 8 || length > 128) {
-    alert(" sorry must be 8 - 128");
+    return " sorry must be 8 - 128";
   }
 
 
-  var upper = confirm("would you like uppercase letters?");
+  //var upper = confirm("would you like uppercase letters?");
   if (confirm("would you like uppercase letters?") === true) {
-    pool.push(upperCase);
+    pool.concat(upperCase);
   } else {
     console.log("no upperCase");
   }
   // var lower = confirm("would you like lowercase letters?");
 
-  var number = confirm("would you like numbers?");
+  // var number = confirm("would you like numbers?");
   if (confirm("would you like numbers?") === true) {
-    pool.push(number);
+    pool.concat(number);
   } else {
     console.log("no numbers");
   }
   // var special = confirm("would you like special charaters?");
 
-  var password = generatePassword();
+  var password = "";
   for (let i = 0; i < length; i++) {
     var choice = [Math.floor(Math.random() * pool.length)];
-    console.log(pool[choice]);
+    password += pool[choice];
   }
-  ;
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
-
-
-var passwordText = document.querySelector("#password");
-passwordText.value = password;
